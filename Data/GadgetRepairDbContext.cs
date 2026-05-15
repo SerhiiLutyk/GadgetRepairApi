@@ -31,15 +31,16 @@ public class GadgetRepairDbContext(DbContextOptions<GadgetRepairDbContext> optio
         });
 
         modelBuilder.Entity<Gadget>().HasData(
-            new Gadget { Id = 1, Brand = "Apple", Model = "iPhone 14", OwnerName = "Олена Коваленко" },
-            new Gadget { Id = 2, Brand = "Samsung", Model = "Galaxy S23", OwnerName = "Іван Петренко" });
+            new Gadget { Id = 1, Brand = "Dell", Model = "Laptop", OwnerName = "Demo Customer" },
+            new Gadget { Id = 2, Brand = "Apple", Model = "Smartphone", OwnerName = "Demo Customer" },
+            new Gadget { Id = 3, Brand = "Samsung", Model = "Tablet", OwnerName = "Demo Customer" });
 
         modelBuilder.Entity<RepairOrder>().HasData(
             new RepairOrder
             {
                 Id = 1,
                 GadgetId = 1,
-                IssueDescription = "Розбитий екран",
+                IssueDescription = "Screen replacement",
                 Status = RepairOrderStatus.InProgress,
                 Price = 3500m
             },
@@ -47,7 +48,7 @@ public class GadgetRepairDbContext(DbContextOptions<GadgetRepairDbContext> optio
             {
                 Id = 2,
                 GadgetId = 2,
-                IssueDescription = "Не заряджається батарея",
+                IssueDescription = "Battery not charging",
                 Status = RepairOrderStatus.Pending,
                 Price = 1200m
             });
