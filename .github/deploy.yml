@@ -30,17 +30,20 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-    - name: 📦 Build, tag, and push image to Amazon ECR
+   - name: 📦 Build, tag, and push image to Amazon ECR
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: gadget-repair
         IMAGE_TAG: latest
       run: |
-        # Збірка образу. Використовуємо ContainerImageName для повної адреси
-        dotnet publish -c Release -p:PublishContainer=true -p:ContainerRegistry=$ECR_REGISTRY -p:ContainerRepository=$ECR_REPOSITORY -p:ContainerImageTag=$IMAGE_TAG -p:RuntimeIdentifier=linux-x64
+        # 1. Збираємо образ як звичайно
+        dotnet publish -c Release -p:PublishContainer=true -p:ContainerRepository=$ECR_REPOSITORY -p:ContainerImageTag=$IMAGE_TAG -p:RuntimeIdentifier=linux-x64
         
-        # Пушимо в AWS
+        # 2. ПРИМУСОВО перейменовуємо його для AWS (це вирішить проблему)
+        docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        
+        # 3. Пушимо
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
