@@ -1,0 +1,10 @@
+@GadgetRepairApi_HostAddress = http://localhost:5180
+
+### Health check (AWS)
+GET {{GadgetRepairApi_HostAddress}}/
+
+### Gadgets
+GET {{GadgetRepairApi_HostAddress}}/api/gadgets
+
+### Repair orders
+GET {{GadgetRepairApi_HostAddress}}/api/repairorders

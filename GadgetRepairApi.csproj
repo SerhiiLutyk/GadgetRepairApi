@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>1d1b3fe8-663d-45d3-895e-6e973e569514</UserSecretsId>
+    <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+    <ContainerRepository>gadget-repair</ContainerRepository>
+    <PublishProfile>DefaultContainer</PublishProfile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.5" />
+  </ItemGroup>
+
+</Project>
