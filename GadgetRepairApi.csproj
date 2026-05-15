@@ -5,9 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>1d1b3fe8-663d-45d3-895e-6e973e569514</UserSecretsId>
-    <ContainerImageTags>1.0.0;latest</ContainerImageTags>
-    <ContainerRepository>gadget-repair</ContainerRepository>
-    <PublishProfile>DefaultContainer</PublishProfile>
   </PropertyGroup>
 
   <ItemGroup>

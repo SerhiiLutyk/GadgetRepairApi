@@ -8,8 +8,7 @@ RUN dotnet restore "GadgetRepairApi.csproj"
 # Копіюємо всі інші файли
 COPY . .
 
-# ДОДАНО /p:PublishContainer=false, щоб вимкнути конфлікт із вбудованою збіркою контейнерів .NET
-RUN dotnet publish "GadgetRepairApi.csproj" -c Release -o /app/publish /p:UseAppHost=false /p:PublishContainer=false
+RUN dotnet publish "GadgetRepairApi.csproj" -c Release -o /app/publish /p:UseAppHost=false /p:EnableSdkContainerSupport=false
 
 # Фінальний образ для запуску
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
